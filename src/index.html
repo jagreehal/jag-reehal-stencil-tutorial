@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Alert Component Starter</title>
+  <script src="/build/alert-component.js"></script>
+
+</head>
+
+<body>
+  <h2>Normal</h2>
+  <alert-component-themes initial-value="2" alert-number="4">
+  </alert-component-themes>
+  <button id="resetButton">Reset</button>
+  <h2>'Light' theme</h2>
+  <alert-component-themes class="light" initial-value="2" alert-number="4">
+  </alert-component-themes>
+
+  <script>
+    const el = document.querySelector('alert-component-themes');
+    el.componentOnReady().then(() => {
+      el.addEventListener('alertRaised', () => {
+        console.log('alert');
+      })
+      document.getElementById('resetButton').addEventListener('click', () => {
+        el.reset();
+      });
+    })
+
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,30 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  font-family: 'sans-serif', monospace;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  font-family: 'sans-serif', monospace;
+}
+
+.current {
+  margin: 0 20px;
+  font-size: 5rem;
+  color: var(--current-color, red);
+}
+
+button {
+  background: #333;
+  border: 0;
+  color: #fff;
+  font-family: inherit;
+  font-size: 2rem;
+}

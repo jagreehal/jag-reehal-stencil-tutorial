@@ -1,8 +1,8 @@
-# How To Build Stencil Components
+# How To Build [Stencil](https://stenciljs.com/) Components
 
 ## What we're building
 
-In this tutorial series we will be building an alarm web component using Stencil
+In this tutorial series we will be building an alert web component using Stencil
 
 ![Alert Component](alert-component.png "Alert Component")
 

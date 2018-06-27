@@ -24,6 +24,7 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-methods initial-value="2" alert-value="4">
+  Methods
 </alert-component-methods>
 <button id="resetButton">Reset</button>
 <script>

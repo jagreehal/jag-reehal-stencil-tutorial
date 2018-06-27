@@ -34,6 +34,7 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-events initial-value="2" alert-value="4">
+  Events
 </alert-component-events>
 <script>
   const el = document.querySelector('alert-component-events');

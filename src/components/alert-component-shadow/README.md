@@ -30,6 +30,7 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-shadow initial-value="2" alert-value="4">
+  Shadow
 </alert-component-shadow>
 <button id="resetButton">Reset</button>
 <script>

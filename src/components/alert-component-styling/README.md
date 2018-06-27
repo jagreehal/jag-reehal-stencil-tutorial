@@ -49,6 +49,7 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-styling initial-value="2" alert-value="4">
+  Styling
 </alert-component-styling>
 <button id="resetButton">Reset</button>
 <script>

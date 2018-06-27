@@ -28,5 +28,6 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-lifecycle initial-value="2" alert-value="4">
+  Life cycle
 </alert-component-lifecycle>
 ```

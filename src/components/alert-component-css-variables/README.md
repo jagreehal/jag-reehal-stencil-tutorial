@@ -25,6 +25,7 @@ Change src/index.html to render the component
   }
 </style>
 <alert-component-css-variables initial-value="2" alert-value="4">
+  CSS variables
 </alert-component-css-variables>
 <button id="resetButton">Reset</button>
 <script>

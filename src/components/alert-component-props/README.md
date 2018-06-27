@@ -35,5 +35,6 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-props initial-value="2" alert-value="4">
+  Props
 </alert-component-props>
 ```

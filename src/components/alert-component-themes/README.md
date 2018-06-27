@@ -31,7 +31,11 @@ Note: the host can specify the theme by specifying a class.
 Change src/index.html to render the component
 
 ```html
+<alert-component-themes initial-value="2" alert-value="4">
+  Default
+</alert-component-themes>
 <alert-component-themes class="light" initial-value="2" alert-value="4">
+  Light Theme
 </alert-component-themes>
 <button id="resetButton">Reset</button>
 <script>

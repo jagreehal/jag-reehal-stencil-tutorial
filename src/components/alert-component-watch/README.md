@@ -27,6 +27,7 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-watch initial-value="2" alert-value="4">
+  Watch
 </alert-component-watch>
 <script>
   const el = document.querySelector('alert-component-watch');

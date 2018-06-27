@@ -14,6 +14,6 @@ Change src/index.html to render the component
 
 ```html
 <alert-component-slots>
-  My Alert Component
+  My Alert Component Slot
 </alert-component-slots>
 ```

@@ -1,5 +1,7 @@
 # How To Build [Stencil](https://stenciljs.com/) Components
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/jagreehal/jag-reehal-stencil-tutorial.svg)](https://greenkeeper.io/)
+
 ## What we're building
 
 In this tutorial series we will be building an alert web component using Stencil

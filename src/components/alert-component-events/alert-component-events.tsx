@@ -1,42 +1,59 @@
-import { Component, Event, EventEmitter, Prop, State } from '@stencil/core';
+import {
+  Component,
+  h,
+  Event,
+  EventEmitter,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 
 export interface AlertRaised {
-  message: string
+  message: string;
 }
 
 @Component({
-  tag: 'alert-component-events'
+  tag: 'alert-component-events',
 })
 export class AlertComponentEvents {
   /**
- * The initial value
- */
+   * The initial value
+   */
   @Prop() initialValue: number = 5;
   /**
-  * The alert value
-  */
+   * The alert value
+   */
   @Prop() alertValue: number = 10;
 
   @State() currentValue: number = 2;
 
   @Event() alertRaised: EventEmitter<AlertRaised>;
 
-  buttonHandler = (e) => {
-    e.target.name === 'increment' ?
-      this.currentValue++ : this.currentValue--;
-    if (this.currentValue === this.alertValue) {
+  @Watch('currentValue')
+  currentValueWatcher(value) {
+    if (value === this.alertValue) {
       this.alertRaised.emit({ message: 'alert!' });
     }
   }
 
+  handleDecrement = () => {
+    this.currentValue--;
+  };
+
+  handleIncrement = () => {
+    this.currentValue++;
+  };
+
   render() {
-    return (
-      [
-        <slot>Alert Component</slot>,
-        <button name="decrement" onClick={this.buttonHandler}>-</button>,
-        <div class="current">{this.currentValue}</div>,
-        <button name="increment" onClick={this.buttonHandler}>+</button>
-      ]
-    );
+    return [
+      <slot>Alert Component</slot>,
+      <button name="decrement" onClick={this.handleDecrement}>
+        -
+      </button>,
+      <div class="current">{this.currentValue}</div>,
+      <button name="increment" onClick={this.handleIncrement}>
+        +
+      </button>,
+    ];
   }
 }

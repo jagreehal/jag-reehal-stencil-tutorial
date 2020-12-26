@@ -1,16 +1,16 @@
-import { Component, Prop, State } from '@stencil/core';
+import { Component, h, Prop, State } from '@stencil/core';
 
 @Component({
-  tag: 'alert-component-lifecycle'
+  tag: 'alert-component-lifecycle',
 })
 export class AlertComponentLifecycle {
   /**
- * The initial value
- */
+   * The initial value
+   */
   @Prop() initialValue: number = 5;
   /**
-  * The alert value
-  */
+   * The alert value
+   */
   @Prop() alertValue: number = 10;
 
   @State() currentValue: number;
@@ -19,19 +19,24 @@ export class AlertComponentLifecycle {
     this.currentValue = this.initialValue;
   }
 
-  buttonHandler = (e) => {
-    e.target.name === 'increment' ?
-     this.currentValue++ : this.currentValue--;
-  }
+  handleDecrement = () => {
+    this.currentValue--;
+  };
+
+  handleIncrement = () => {
+    this.currentValue++;
+  };
 
   render() {
-    return (
-      [
-        <slot>Alert Component</slot>,
-        <button name="decrement" onClick={this.buttonHandler}>-</button>,
-        <div class="current">{this.currentValue}</div>,
-        <button name="increment" onClick={this.buttonHandler}>+</button>
-      ]
-    );
+    return [
+      <slot>Alert Component</slot>,
+      <button name="decrement" onClick={this.handleDecrement}>
+        -
+      </button>,
+      <div class="current">{this.currentValue}</div>,
+      <button name="increment" onClick={this.handleIncrement}>
+        +
+      </button>,
+    ];
   }
 }

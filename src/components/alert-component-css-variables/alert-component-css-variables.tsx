@@ -1,29 +1,38 @@
-import { Component, Event, EventEmitter, Prop, Method, State, Watch } from '@stencil/core';
+import {
+  Component,
+  h,
+  Event,
+  EventEmitter,
+  Prop,
+  Method,
+  State,
+  Watch,
+} from '@stencil/core';
 
 export interface AlertRaised {
-  message: string
+  message: string;
 }
 
 @Component({
   tag: 'alert-component-css-variables',
   styleUrl: 'alert-component-css-variables.css',
-  shadow: true
+  shadow: true,
 })
 export class AlertComponentCssVariables {
   /**
- * The initial value
- */
+   * The initial value
+   */
   @Prop() initialValue: number = 5;
   /**
-  * The alert value
-  */
+   * The alert value
+   */
   @Prop() alertValue: number = 10;
 
   /**
-  * Resets the current value to the initial value
-  */
+   * Resets the current value to the initial value
+   */
   @Method()
-  reset() {
+  async reset() {
     this.currentValue = this.initialValue;
   }
 
@@ -38,23 +47,28 @@ export class AlertComponentCssVariables {
     }
   }
 
-  buttonHandler = (e) => {
-    e.target.name === 'increment' ?
-      this.currentValue++ : this.currentValue--;
-  }
+  handleDecrement = () => {
+    this.currentValue--;
+  };
+
+  handleIncrement = () => {
+    this.currentValue++;
+  };
 
   render() {
-    return (
-      [
-        <header>
-          <slot>Alert Component</slot>
-        </header>,
-        <section class="content">
-          <button name="decrement" onClick={this.buttonHandler}>-</button>
-          <div class="current">{this.currentValue}</div>
-          <button name="increment" onClick={this.buttonHandler}>+</button>
-        </section>
-      ]
-    );
+    return [
+      <header>
+        <slot>Alert Component</slot>
+      </header>,
+      <section class="content">
+        <button name="decrement" onClick={this.handleDecrement}>
+          -
+        </button>
+        <div class="current">{this.currentValue}</div>
+        <button name="increment" onClick={this.handleIncrement}>
+          +
+        </button>
+      </section>,
+    ];
   }
 }

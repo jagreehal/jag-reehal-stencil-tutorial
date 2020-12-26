@@ -2,8 +2,8 @@
   "name": "jag-reehal-stencil-tutorial",
   "version": "0.0.1",
   "description": "Stencil Tutorial created by Jag Reehal",
-  "module": "dist/esm/index.js",
-  "main": "dist/index.js",
+  "module": " ./dist/index.js",
+  "main": " ./dist/index.cjs.js",
   "types": "dist/types/components.d.ts",
   "collection": "dist/collection/collection-manifest.json",
   "files": [
@@ -11,17 +11,17 @@
   ],
   "scripts": {
     "build": "stencil build",
-    "dev": "stencil build --dev --watch --serve",
-    "serve": "stencil-dev-server",
-    "start": "npm run dev",
-    "test": "jest",
-    "test.watch": "jest --watch"
+    "start": "stencil build --dev --watch --serve",
+    "test": "stencil test --spec",
+    "test.watch": "stencil test --spec --watchAll",
+    "test.watch.all": "stencil test --spec --e2e --watchAll"
   },
   "dependencies": {},
   "devDependencies": {
-    "@stencil/core": "^0.10.0-3",
-    "@types/jest": "^23.1.2",
-    "jest": "^23.2.0"
+    "@stencil/core": "^2.3.0",
+    "@types/jest": "^26.0.19",
+    "jest": "^26.6.3",
+    "jest-cli": "^26.6.3"
   },
   "repository": {
     "type": "git",
@@ -34,16 +34,6 @@
   },
   "homepage": "https://github.com/jagreehal/jag-reehal-stencil-tutorial",
   "jest": {
-    "transform": {
-      "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/@stencil/core/testing/jest.preprocessor.js"
-    },
-    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(tsx?|jsx?)$",
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "json",
-      "jsx"
-    ]
+    "preset": "@stencil/core/testing"
   }
 }

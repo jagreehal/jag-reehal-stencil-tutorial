@@ -11,14 +11,14 @@ Methods can be used by importing 'Method' from Stencil.
   * Resets the current value to the initial value
   */
   @Method()
-  reset() {
+  async reset() {
     this.currentValue = this.initialValue;
   }
 ```
 
 ## See it running
 
-Note: the use of 'componentOnReady' before the event listener is added.  This ensures the Stencil component has been loaded.
+Note: the use of 'componentOnReady' before the event listener is added. This ensures the Stencil component has been loaded.
 
 Change src/index.html to render the component
 
@@ -32,10 +32,10 @@ Change src/index.html to render the component
   el.componentOnReady().then(() => {
     el.addEventListener('alertRaised', () => {
       console.log('alert');
-    })
-    document.getElementById('resetButton').addEventListener('click', () =>{
+    });
+    document.getElementById('resetButton').addEventListener('click', () => {
       el.reset();
     });
-  })
+  });
 </script>
 ```

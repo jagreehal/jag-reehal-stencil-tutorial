@@ -1,4 +1,4 @@
-import { TestWindow } from '@stencil/core/dist/testing';
+import { newSpecPage, SpecPage } from '@stencil/core/testing';
 import { AlertComponentEvents } from './alert-component-events';
 
 describe('alert-component-events', () => {
@@ -11,15 +11,16 @@ describe('alert-component-events', () => {
   }
 
   describe('rendering', () => {
+    let page: SpecPage;
     let element;
-    let window;
 
     beforeEach(async () => {
-      window = new TestWindow();
-      element = await window.load({
+      page = await newSpecPage({
         components: [AlertComponentEvents],
-        html: '<alert-component-events initial-value="2" alert-value="3"></alert-component-events>'
+        html:
+          '<alert-component-events initial-value="2" alert-value="3"></alert-component-events>',
       });
+      element = page.root;
     });
 
     it('should be able to render the component with initial value', async () => {
@@ -28,27 +29,27 @@ describe('alert-component-events', () => {
 
     it('should be able to increment the value', async () => {
       element.querySelector('button[name="increment"]').click();
-      await window.flush();
+      await page.waitForChanges();
       expect(getCurrentValue(element)).toEqual('3');
     });
 
     it('should be able to decrement the value', async () => {
       element.querySelector('button[name="decrement"]').click();
-      await window.flush();
+      await page.waitForChanges();
       expect(getCurrentValue(element)).toEqual('1');
     });
 
     it('should emit event when alert and current value are equal', async () => {
       const _callback = jest.fn();
-      element.addEventListener('alertRaised', _callback);
+      page.doc.addEventListener('alertRaised', _callback);
       element.querySelector('button[name="increment"]').click();
-      await window.flush();
+      await page.waitForChanges();
       expect(_callback).toHaveBeenCalledWith(
         expect.objectContaining({
           detail: {
-            message: 'alert!'
-          }
-        })
+            message: 'alert!',
+          },
+        }),
       );
     });
   });
